@@ -58,6 +58,10 @@ async function getApi(){
 async function displayArticle(){
   const data = await getApi()
   // const randomNews = randomData(data.articles)
+  if (!data || !data.articles || !Array.isArray(data.articles)) {
+    console.error("Invalid data structure received from API.");
+    return;
+  }
 
   cardResult.innerHTML= ""
 
