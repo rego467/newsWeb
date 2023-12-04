@@ -1,0 +1,107 @@
+*{
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+.container{
+  width: 100%;
+  max-width: 1500px;
+  margin: auto;
+  min-height: 100vh;
+  justify-content: center;
+  align-content: center;
+  display: flex;
+  flex-direction: column;
+  padding: 10px;
+}
+
+
+.form{
+  display: flex;
+  flex-direction: column;
+  padding: 10px;
+  gap: 15px;
+  border-radius: 7px;
+  box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px, rgba(60, 64, 67, 0.15) 0px 1px 3px 1px;
+}
+
+input{
+  width: 100%;
+  padding: 7px;
+  border-radius: 7px;
+  font-size: 17px;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  border: 2px solid black;
+  position: relative;
+}
+
+.login{
+  padding: 8px;
+  border: 3px solid white;
+  border-radius: 7px;
+  background-color: transparent;
+  font-size: 15px;
+  font-weight: bold;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  cursor: pointer;
+  margin: 10px 0;
+  box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px, rgba(60, 64, 67, 0.15) 0px 1px 3px 1px;
+}
+
+.eror{
+  font-size: 14px;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  color: red;
+  justify-content: center;
+  display: flex;
+}
+
+.h1-form{
+  text-align: center;
+  font-size: 18px;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  margin: 20px 0px;
+}
+
+.span-form{
+  display: flex;
+  gap: 8px;
+  justify-content: center;
+  font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}
+
+.moveto-register{
+  text-decoration: underline;
+  cursor: pointer;
+}
+.eyes{
+  cursor: pointer;
+  background-color: white;
+  align-items: center;
+  height: 40px;
+  padding: 10px;
+  border-radius: 7px;
+  border: 2px solid black;
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  top: 0;
+  margin-top: -1px;
+  margin-right: -1px;
+}
+
+.input-group{
+  position: relative;
+}
+
+@media (min-width: 650px){ 
+  .form{
+    width: 500px;
+  }
+
+  .container{
+    display: flex;
+    align-items: center;
+  }
+}
