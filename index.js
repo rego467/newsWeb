@@ -13,33 +13,34 @@ let buttonActions = document.querySelector(".button-actions")
 let resultCount = document.querySelector('.result-count')
 
 
-const dummy = "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSQTJvv_C0eeDiv043l5pWil4KsV0t_YQ1k2g&usqp=CAU"
-const dummyHeading = "lorem ipsum"
-const woiIni = "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua"
+// const dummy = "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSQTJvv_C0eeDiv043l5pWil4KsV0t_YQ1k2g&usqp=CAU"
+// const dummyHeading = "lorem ipsum"
+// const woiIni = "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua"
 
 class Count{
   static count = 10
 
   static increment(){
-    return this.count = this.count + 3
+    return this.count = this.count + 5
   }
 
   static decrement(){
     if(this.count === 10){
       this.count
     }else{
-      this.count = this.count - 3
+      this.count = this.count - 5
     }
   }
 }
 
 
 async function getApi(){
-  const url =`https://newsapi.org/v2/everything?domains=wsj.com&apiKey=${PUBLIC_KEY}`
+  const url =`https://api.jikan.moe/v4/top/anime`
   try {
     const response = await fetch(url, {method: "GET"})
     const resJson =  await response.json()
-    return resJson.articles
+console.log(resJson)
+    return resJson
   } catch (error) {
     console.log(error.message)
   }
@@ -56,7 +57,7 @@ async function getApi(){
 
 
 async function displayArticle(){
-  const data = await getApi()
+  const getData = await getApi()
   // // const randomNews = randomData(data.articles)
   // if (!data || !data.articles || !Array.isArray(data.articles)) {
   //   console.error("Invalid data structure received from API.");
@@ -65,14 +66,13 @@ async function displayArticle(){
 
   cardResult.innerHTML= ""
 
-  data
+  getData.data
     .slice(0, Count.count)
     .map((item)=>{
       cardResult.innerHTML +=`
       <div class="card">
-        <img src=${item.urlToImage === null ? dummy : item.urlToImage} alt="">
-        <h1 class="h1-card">${item.author === null ? dummyHeading : item.author }</h1>
-        <p class="p-card">${item.description === "" ? woiIni : item.description}</p>
+        <img src=${item.images.jpg.image_url} alt="" loading="lazy">
+        <h1 class="h1-card">${item.title}</h1>
       </div>
       `
   })
