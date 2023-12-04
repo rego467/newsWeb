@@ -25,7 +25,7 @@ class Count{
   }
 
   static decrement(){
-    if(this.count === 3){
+    if(this.count === 10){
       this.count
     }else{
       this.count = this.count - 3
@@ -45,23 +45,23 @@ async function getApi(){
   }
 }
 
-function randomData(dataAray){
-  let result = [];
-    for (let index = 0; index < dataAray.length; index++) {
-      const random = Math.floor(Math.random() * dataAray.length)
-      result.push(dataAray[random])
-    }
-  return result  
-}
+// function randomData(dataAray){
+//   let result = [];
+//     for (let index = 0; index < dataAray.length; index++) {
+//       const random = Math.floor(Math.random() * dataAray.length)
+//       result.push(dataAray[random])
+//     }
+//   return result  
+// }
 
 
 async function displayArticle(){
   const data = await getApi()
-  const randomNews = randomData(data.articles)
+  // const randomNews = randomData(data.articles)
 
   cardResult.innerHTML= ""
 
-  randomNews
+  data.articles
     .slice(0, Count.count)
     .map((item)=>{
       cardResult.innerHTML +=`
