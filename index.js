@@ -39,7 +39,7 @@ async function getApi(){
   try {
     const response = await fetch(url, {method: "GET"})
     const resJson =  await response.json()
-    return resJson
+    return resJson.articles
   } catch (error) {
     console.log(error.message)
   }
@@ -57,15 +57,15 @@ async function getApi(){
 
 async function displayArticle(){
   const data = await getApi()
-  // const randomNews = randomData(data.articles)
-  if (!data || !data.articles || !Array.isArray(data.articles)) {
-    console.error("Invalid data structure received from API.");
-    return;
-  }
+  // // const randomNews = randomData(data.articles)
+  // if (!data || !data.articles || !Array.isArray(data.articles)) {
+  //   console.error("Invalid data structure received from API.");
+  //   return;
+  // }
 
   cardResult.innerHTML= ""
 
-  data.articles
+  data
     .slice(0, Count.count)
     .map((item)=>{
       cardResult.innerHTML +=`
