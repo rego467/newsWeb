@@ -1,4 +1,28 @@
+.container{
+  width: 100%;
+  max-width: 1500px;
+  margin: auto;
+}
+
+.back{
+  margin: 14px 0;
+}
+.h1-detail{
+  font-size: 18px;
+  font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+  margin-bottom: 20px;
+}
 .card-detail{
-  background-color: antiquewhite;
   padding: 5px;  
+}
+.video{
+  border-radius: 7px;
+  width: 100%;
+  box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px, rgba(60, 64, 67, 0.15) 0px 1px 3px 1px;
+}
+.des{
+  line-height: 29px;
+  font-size: 17px;
+  font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+  white-space: pre-line;
 }
