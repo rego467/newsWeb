@@ -53,43 +53,57 @@ class LastCount{
   }
 }
 
-
 async function getApi(){
   const url =`https://api.jikan.moe/v4/top/anime?page=${Count.count}`
   try {
     const response = await fetch(url, {method: "GET"})
     const resJson =  await response.json()
-    console.log(resJson)
-    displayArticle(resJson.data)
+    console.log(resJson.data)
+    return resJson.data
   } catch (error) {
     console.log(error.message)
   }
 }
 
-function displayArticle(data){
+async function displayArticle(){
+  const getData = await getApi()
   cardResult.innerHTML= ""
-  data
+  getData
     .map((item)=>{
       cardResult.innerHTML +=`
-      <div class="card">
-        <img src=${item.images.jpg.image_url} alt="" loading="lazy">
-        <h1 class="h1-card">${item.title}</h1>
-      </div>
+        <div class="card" data-id=${item.mal_id}>
+          <img src=${item.images.jpg.image_url} alt="" loading="lazy">
+          <h1 class="h1-card">${item.title}</h1>
+        </div>
       `
   })
 
 }
 
+function shows(id){
+  console.log("e", id)
+}
 function renderPertamaKali(){
+  
   if(!userLogin){
     return window.location.href ="login.html"
   }
+  
+  cardResult.addEventListener("click", async function(event){
+    const card = event.target.closest(".card")
+    const data = await getApi()
+    if(card){
+      const index = card.getAttribute("data-id")
+      localStorage.setItem("data", JSON.stringify(data))
+      window.location.href =`detail.html?id=${index}`
+    }
+  })
 
   onload =()=>{
     loading.textContent ="loading..."
     buttonActions.classList.add("hidden")  
     setTimeout(()=>{
-      getApi()
+      displayArticle()
       numberPage.textContent = Count.count
       numberOfPage.textContent = LastCount.countL
       loading.textContent = ""
@@ -104,7 +118,7 @@ renderPertamaKali()
 function nextButton(){
   Count.increment()
   LastCount.increment()
-  getApi()
+  displayArticle()
   numberPage.textContent = Count.count
   numberOfPage.textContent = LastCount.countL
 }
@@ -112,7 +126,7 @@ function nextButton(){
 function prevButton(){
   LastCount.decrement()
   Count.decrement()
-  getApi()
+  displayArticle()
   numberPage.textContent = Count.count
   numberOfPage.textContent = LastCount.countL
 }
