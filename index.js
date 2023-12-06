@@ -30,7 +30,6 @@ class Count{
       this.count
     }else{
       this.count = this.count - 1
-      console.log("woii")
     }
   }
 }
@@ -58,7 +57,6 @@ async function getApi(){
   try {
     const response = await fetch(url, {method: "GET"})
     const resJson =  await response.json()
-    console.log(resJson.data)
     return resJson.data
   } catch (error) {
     console.log(error.message)
@@ -80,9 +78,6 @@ async function displayArticle(){
 
 }
 
-function shows(id){
-  console.log("e", id)
-}
 function renderPertamaKali(){
   
   if(!userLogin){

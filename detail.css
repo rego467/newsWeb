@@ -15,7 +15,7 @@
 .card-detail{
   padding: 5px;  
 }
-.video{
+.frame{
   border-radius: 7px;
   width: 100%;
   box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px, rgba(60, 64, 67, 0.15) 0px 1px 3px 1px;
@@ -25,4 +25,13 @@
   font-size: 17px;
   font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
   white-space: pre-line;
+}
+
+@media (min-width: 800px){
+ .card-detail{
+  width: 70%;
+ }
+ .frame{
+  height: 500px;
+ }
 }
